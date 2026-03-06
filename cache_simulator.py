@@ -2,6 +2,20 @@ import sys
 
 DEFAULT_INPUT_FILE = "inputs/example_input1.txt"
 
+# "First In First Out" algorithm
+def fifo(cache_size, requests):
+    cache = []
+    misses = 0
+    for request in requests:
+        if request in cache:
+            continue
+        if len(cache) < cache_size:
+            cache.append(request)
+        else:
+            cache.pop(0)
+            cache.append(request)
+            misses += 1
+    return misses
 
 if __name__ == '__main__':
     # input files are stored in the inputs folder, pass the path as a argument
@@ -21,3 +35,5 @@ if __name__ == '__main__':
     print("[INFO]: Requests: ", requests)
 
     fifo_misses = fifo(k, requests.copy())
+
+    print("[FINAL]: FIFO misses: ", fifo_misses)

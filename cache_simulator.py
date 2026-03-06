@@ -36,4 +36,4 @@ if __name__ == '__main__':
 
     fifo_misses = fifo(k, requests.copy())
 
-    print("[FINAL]: FIFO misses: ", fifo_misses)
+    print("[OUTPUT]: FIFO misses: ", fifo_misses)

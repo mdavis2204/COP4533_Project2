@@ -7,7 +7,12 @@ Team:
 # Greedy Algorithms
 
 Run code: "python cache_simulator.py [test file name]"
-Example: "python cache_simulator.py inputs/test_input2.txt"
+
+Example: "python cache_simulator.py examples/example.in"
+
+Example input: [examples/example.in](examples/example.in)
+
+Example output: [examples/example.out](examples/example.out)
 
 Assumptions:
 * Number of requests will equal m (second input)

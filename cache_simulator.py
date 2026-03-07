@@ -48,51 +48,6 @@ def optff(cache_size, requests):
             cache.append(request)
     return misses
 
-def lru(cache_size, requests):
-    cache = []
-    misses = 0
-    for request in requests:
-        if request in cache:
-            cache.pop(cache.index(request))
-            cache.append(request)
-        if len(cache) < cache_size:
-            cache.append(request)
-        else:
-            cache.pop(0)
-            cache.append(request)
-    return misses
-
-# Farthest Future algorithm (OPTFF)
-def optff(cache_size, requests):
-    cache = []
-    misses = 0
-    n = len(requests)
-
-    # Finds next occurence of ID after lookahead_index
-    def next_use(item, lookahead_index):
-        for j in range(lookahead_index + 1, n):
-            if requests[j] == item:
-                return j
-        return n
-
-    for i, request in enumerate(requests):
-        if request in cache:
-            continue
-        misses += 1
-        if len(cache) < cache_size:
-            cache.append(request)
-        else:
-            farthest_index = -1
-            evict_item = None
-            for item in cache:
-                j = next_use(item, i)
-                if j > farthest_index:
-                    farthest_index = j
-                    evict_item = item
-            cache.remove(evict_item)
-            cache.append(request)
-    return misses
-
 # Least Recently Used algorithm
 def lru(cache_size, requests):
     cache = []
@@ -131,5 +86,5 @@ if __name__ == '__main__':
     optff_misses = optff(k, requests.copy())
 
     print("FIFO  :", fifo_misses)
-    print("LRU   : ", lru_misses)
+    print("LRU   :", lru_misses)
     print("OPTFF :", optff_misses)

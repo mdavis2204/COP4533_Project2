@@ -1,6 +1,6 @@
 import sys
 
-DEFAULT_INPUT_FILE = "inputs/example_input2.txt"
+DEFAULT_INPUT_FILE = "inputs/test_input1.txt"
 
 # "First In First Out" algorithm
 def fifo(cache_size, requests):

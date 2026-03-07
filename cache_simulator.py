@@ -1,6 +1,6 @@
 import sys
 
-DEFAULT_INPUT_FILE = "inputs/example_input1.txt"
+DEFAULT_INPUT_FILE = "inputs/example_input2.txt"
 
 # "First In First Out" algorithm
 def fifo(cache_size, requests):
@@ -9,6 +9,21 @@ def fifo(cache_size, requests):
     for request in requests:
         if request in cache:
             continue
+        if len(cache) < cache_size:
+            cache.append(request)
+        else:
+            cache.pop(0)
+            cache.append(request)
+            misses += 1
+    return misses
+
+def lru(cache_size, requests):
+    cache = []
+    misses = 0
+    for request in requests:
+        if request in cache:
+            cache.pop(cache.index(request))
+            cache.append(request)
         if len(cache) < cache_size:
             cache.append(request)
         else:
@@ -27,7 +42,7 @@ if __name__ == '__main__':
 
     k = int(first_line.split(" ")[0])
     print("[INFO]: Cache size: ", k)
-    
+
     requests = []
     for i, request in enumerate(second_line.split(" ")):
         request = int(request)
@@ -35,5 +50,7 @@ if __name__ == '__main__':
     print("[INFO]: Requests: ", requests)
 
     fifo_misses = fifo(k, requests.copy())
+    lru_misses = lru(k, requests.copy())
 
     print("[OUTPUT]: FIFO misses: ", fifo_misses)
+    print("[OUTPUT]: LRU misses: ", lru_misses)

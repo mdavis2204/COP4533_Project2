@@ -1,8 +1,8 @@
 # COP4533_Project2
 
 Team:
-  Matthew Davis, UFID 6835-3882
-  William Zhu, UFID 3189-3413
+* Matthew Davis, UFID 6835-3882
+* William Zhu, UFID 3189-3413
 
 # Greedy Algorithms
 

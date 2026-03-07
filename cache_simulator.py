@@ -17,6 +17,23 @@ def fifo(cache_size, requests):
             cache.append(request)
     return misses
 
+# Least Recently Used algorithm
+def lru(cache_size, requests):
+    cache = []
+    misses = 0
+    for request in requests:
+        if request in cache:
+            cache.pop(cache.index(request))
+            cache.append(request)
+        else:
+            misses += 1
+            if len(cache) < cache_size:
+                cache.append(request)
+            else:
+                cache.pop(0)
+                cache.append(request)
+    return misses
+
 # Farthest Future algorithm (OPTFF)
 def optff(cache_size, requests):
     cache = []
@@ -46,22 +63,6 @@ def optff(cache_size, requests):
                     evict_item = item
             cache.remove(evict_item)
             cache.append(request)
-    return misses
-
-# Least Recently Used algorithm
-def lru(cache_size, requests):
-    cache = []
-    misses = 0
-    for request in requests:
-        if request in cache:
-            cache.pop(cache.index(request))
-            cache.append(request)
-        if len(cache) < cache_size:
-            cache.append(request)
-        else:
-            cache.pop(0)
-            cache.append(request)
-            misses += 1
     return misses
 
 if __name__ == '__main__':

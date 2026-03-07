@@ -74,18 +74,25 @@ if __name__ == '__main__':
         second_line = file.readline().strip()
 
     k = int(first_line.split(" ")[0])
-    print("[INFO]: Cache size: ", k)
 
     requests = []
     for i, request in enumerate(second_line.split(" ")):
         request = int(request)
         requests.append(request)
-    print("[INFO]: Requests: ", requests)
 
     fifo_misses = fifo(k, requests.copy())
     lru_misses = lru(k, requests.copy())
     optff_misses = optff(k, requests.copy())
 
-    print("FIFO  :", fifo_misses)
-    print("LRU   :", lru_misses)
-    print("OPTFF :", optff_misses)
+    out_str = (
+        f"FIFO  : {fifo_misses}\n"
+        f"LRU   : {lru_misses}\n"
+        f"OPTFF : {optff_misses}\n"
+    )
+
+
+    # output to console and file
+    print(out_str)
+
+    with open("cache_simulator.out", "w") as file:
+        file.write(out_str)

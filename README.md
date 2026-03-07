@@ -8,7 +8,7 @@ Team:
 
 Run code: "python cache_simulator.py [test file name]"
 
-Example: "python cache_simulator.py inputs/test_input2.txt"
+Example: "python cache_simulator.py examples/example.in"
 
 Example input: [examples/example.in](examples/example.in)
 

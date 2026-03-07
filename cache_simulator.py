@@ -87,7 +87,7 @@ if __name__ == '__main__':
     out_str = (
         f"FIFO  : {fifo_misses}\n"
         f"LRU   : {lru_misses}\n"
-        f"OPTFF : {optff_misses}\n"
+        f"OPTFF : {optff_misses}"
     )
 
 
